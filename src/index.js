@@ -1,15 +1,7 @@
-import React from "react";
-import { TodoProvider } from "./Components/TodoContext/TodoContext";
-import { AppUI } from "./App/AppUI";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
 
-function App() {
-  return (
-    <TodoProvider>
-       <AppUI/>
-    </TodoProvider>
-  );
-}
-
-
-
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);

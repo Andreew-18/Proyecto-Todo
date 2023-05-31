@@ -14,11 +14,10 @@ export function useLocalStorage(itemName, initialValue) {
       let parsedItem;
   
       if (!localStorageItem) {
-        localStorage.setItem("itemName", JSON.stringify(initialValue));
+        localStorage.setItem(itemName, JSON.stringify(initialValue));
         parsedItem = initialValue;
       } else {
-        parsedItem = JSON.parse
-        (localStorageItem);
+        parsedItem = JSON.parse(localStorageItem);
         setItem(parsedItem);
       }
   
@@ -29,10 +28,13 @@ export function useLocalStorage(itemName, initialValue) {
       }
   
     },2000);  
-  }, [initialValue,itemName])
+  }, [])
+
+  
+
 
   const saveItem = (newItem) => {
-    localStorage.setItem("itemName", JSON.stringify(newItem));
+    localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);
   };
 

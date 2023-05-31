@@ -7,7 +7,7 @@ const TodoContext = React.createContext();
 function TodoProvider({ children }) {
   const {
     item: todos,
-    saveItem: saveTodos,
+    saveItem,
     loading,
     error,
   } = useLocalStorage('TODOS_V1', []);
@@ -33,21 +33,21 @@ function TodoProvider({ children }) {
       parrafo,
       completed: false,
     });
-    saveTodos(newTodos);
+    saveItem(newTodos);
   };
 
   const completeTodo = (parrafo) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex((todo) => todo.parrafo === parrafo);
     newTodos[todoIndex].completed = true;
-    saveTodos(newTodos);
+    saveItem(newTodos);
   };
 
   const deleteTodo = (parrafo) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex((todo) => todo.parrafo === parrafo);
     newTodos.splice(todoIndex, 1);
-    saveTodos(newTodos);
+    saveItem(newTodos);
   };
 
   return (
